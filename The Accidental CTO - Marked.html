@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Accidental CTO</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Charter", "Georgia", "Times New Roman", serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: #fdfdfd;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem 0;
+            color: #1a1a1a;
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.2rem 0;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            color: #2c2c2c;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.8rem 0;
+            color: #2c2c2c;
+        }
+
+        p {
+            margin: 1.2rem 0;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        code {
+            font-family: "SF Mono", "Monaco", "Cascadia Code", "Roboto Mono", monospace;
+            background: #f8f8f8;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.85em;
+            border: 1px solid #e8e8e8;
+        }
+
+        pre {
+            background: #f8f8f8;
+            border: 1px solid #e8e8e8;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+            font-family: "SF Mono", "Monaco", "Cascadia Code", "Roboto Mono", monospace;
+            font-size: 0.9rem;
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        blockquote {
+            border-left: 4px solid #ddd;
+            margin: 1.2rem 0;
+            padding-left: 1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        ul,
+        ol {
+            margin: 1.2rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid #ddd;
+        }
+
+        a:hover {
+            color: #1a1a1a;
+            border-bottom-color: #1a1a1a;
+        }
+
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8f8f8;
+            border-radius: 4px;
+        }
+
+        .error {
+            text-align: center;
+            color: #d32f2f;
+            font-style: italic;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #ffeaea;
+            border: 1px solid #ffcdd2;
+            border-radius: 4px;
+        }
+
+        .error-details {
+            font-size: 0.9em;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        /* Typography refinements */
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media print {
+            body {
+                max-width: none;
+                padding: 1rem;
+                font-size: 12pt;
+                line-height: 1.5;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                page-break-after: avoid;
+            }
+
+            p {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div class="loading">
+            Loading "The Accidental CTO" from
+            <a href="https://github.com/subhashchy/The-Accidental-CTO" target="_blank">GitHub</a>...
+        </div>
+    </div>
+
+    <script>
+        // Configure marked options
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            headerIds: true,
+            mangle: false
+        });
+
+        // Load and render the markdown file
+        document.addEventListener('DOMContentLoaded', async function () {
+            const contentDiv = document.getElementById('content');
+
+            try {
+                // Fetch the markdown file from GitHub
+                const response = await fetch('https://raw.githubusercontent.com/subhashchy/The-Accidental-CTO/main/The%20Accidental%20CTO.md');
+
+                if (!response.ok) {
+                    throw new Error(`Failed to load file: ${response.status} ${response.statusText}`);
+                }
+
+                const markdownContent = await response.text();
+
+                // Render with marked.js
+                const htmlContent = marked.parse(markdownContent);
+                contentDiv.innerHTML = htmlContent;
+
+            } catch (error) {
+                console.error('Error loading or rendering markdown:', error);
+                contentDiv.innerHTML = `
+                    <div class="error">
+                        <strong>Error loading "The Accidental CTO"</strong>
+                        <div class="error-details">
+                            ${error.message}
+                            <br><br>
+                            <strong>Note:</strong> This file fetches content from GitHub. 
+                            Make sure you have an internet connection and that GitHub is accessible.
+                            <br>
+                            Source: <a href="https://github.com/subhashchy/The-Accidental-CTO" target="_blank">The Accidental CTO on GitHub</a>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+
+</html>
